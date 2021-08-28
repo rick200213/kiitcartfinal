@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css" />
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="static/css/styles.css" />
+   <!-- Glidejs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+  <title>KIITCART</title>
+</head>
+
+<body>
+  <!--
+        ========================
+        Header
+        ========================
+     -->
+
+  <header id="header" class="header">
+    <!-- Navigation -->
+    {% if session.username %}
+     <div class="navigation">
+      <div class="container">
+        <nav class="nav__center">
+          <div class="nav__header">
+            <div class="nav__logo">
+              <h1><span id=basic>KIIT</span>CART</h1>
+            </div>
+
+            <div class="nav__hamburger">
+              <span>
+                <svg>
+                  <use xlink:href="./images/sprite.svg#icon-menu"></use>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="nav__menu">
+            <div class="menu__top">
+              <h1 class="nav__category">KIITCART<span></span></h1>
+              <div class="close__toggle">
+                <svg>
+                  <use xlink:href="./images/sprite.svg#icon-cross"></use>
+                </svg>
+              </div>
+            </div>
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a href="#header" class="nav__link scroll-link">Home</a>
+              </li>
+
+              <li class="nav__item">
+                <a href="#featured" class="nav__link scroll-link">Featured</a>
+              </li>
+
+              <li class="nav__item">
+                <a href="#blog" class="nav__link scroll-link">Blog</a>
+              </li>
+
+              <li class="nav__item">
+                <a href="#newsletter" class="nav__link scroll-link">Subscribe</a>
+              </li>
+
+              <li class="nav__item">
+                <a href="{{ url_for('logout') }}" class="nav__link">Logout</a>
+              </li>
+
+
+            </ul>
+            <h3>welcome,{{session.username}}</h3>
+            <ul class="nav__icons">
+              <a href="#" class="icon__item">
+                <svg>
+                  <use xlink:href="static/images/sprite.svg#icon-search"></use>
+                </svg>
+              </a>
+
+              <a href="#" class="icon__item">
+                <svg>
+                  <use xlink:href="static/images/sprite.svg#icon-user"></use>
+                </svg>
+              </a>
+
+               <div class="container">
+                 <!-- Button to Open the Modal -->
+               <button type="button"   class="btn btn-primary icon__item" data-toggle="modal" data-target="#myModal">
+                 <svg>
+                  <use xlink:href="./images/sprite.svg#icon-shopping-basket"></use>
+                </svg>
+               <span></span>
+
+            </button>
+
+
+                </div>
+            </ul>
+
+          </div>
+        </nav>
+      </div>
+    </div>
+    {% else %}
+     <div class="navigation">
+      <div class="container">
+        <nav class="nav__center">
+          <div class="nav__header">
+            <div class="nav__logo">
+              <h1><span id=basic>KIIT</span>CART</h1>
+            </div>
+
+            <div class="nav__hamburger">
+              <span>
+                <svg>
+                  <use xlink:href="./images/sprite.svg#icon-menu"></use>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="nav__menu">
+            <div class="menu__top">
+              <h1 class="nav__category">KIITCART<span></span></h1>
+              <div class="close__toggle">
+                <svg>
+                  <use xlink:href="./images/sprite.svg#icon-cross"></use>
+                </svg>
+              </div>
+            </div>
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a href="#header" class="nav__link scroll-link">Home</a>
+              </li>
+
+              <li class="nav__item">
+                <a href="#featured" class="nav__link scroll-link">Featured</a>
+              </li>
+
+              <li class="nav__item">
+                <a href="#blog" class="nav__link scroll-link">Blog</a>
+              </li>
+
+              <li class="nav__item">
+                <a href="#newsletter" class="nav__link scroll-link">Subscribe</a>
+              </li>
+
+              <li class="nav__item">
+                <a href="{{ url_for('login') }}" class="nav__link">Login</a>
+              </li>
+
+              <li class="nav__item">
+                <a href="{{ url_for('register') }}" class="nav__link">Register</a>
+              </li>
+            </ul>
+
+            <ul class="nav__icons">
+              <a href="#" class="icon__item">
+                <svg>
+                  <use xlink:href="static/images/sprite.svg#icon-search"></use>
+                </svg>
+              </a>
+
+              <a href="#" class="icon__item">
+                <svg>
+                  <use xlink:href="static/images/sprite.svg#icon-user"></use>
+                </svg>
+              </a>
+
+              <a href="#" class="icon__item">
+                <svg>
+                  <use xlink:href="static/images/sprite.svg#icon-shopping-basket"></use>
+                </svg>
+                <span>2</span>
+              </a>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero__content container">
+        <h1>
+          <span>Fulfill <span class="color">all</span> your college needs with</span>
+          <span class="color">KIITCART</span> online shop</span>
+        </h1>
+        <a href="#" class="btn btn-hero">shop now</a>
+      </div>
+
+      <a href="#new__arrival" class="goto__next scroll-link">
+        <span>
+          <svg>
+            <use xlink:href="static/images/sprite.svg#icon-angle-down"></use>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </header>
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Shopping Cart</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body" id="cart-modal-body">
+          {% if 'cart_item' in session %}
+          <div class="cart-page">
+            <div class="row">
+                <div class="col-sm-3" ><h3>Product</h3></div>
+                <div class="col-sm-3" ><h3>Remove</h3></div>
+                <div class="col-sm-3" ><h3>Quantity</h3></div>
+                <div class="col-sm-3" ><h3>Price</h3></div>
+            </div>
+       {% for key, val in session['cart_item'].items() %}
+               {% set quantity = session['cart_item'][key]['quantity'] %}
+               {% set price = session['cart_item'][key]['price'] %}
+               {% set item_price = session['cart_item'][key]['total_price'] %}
+               {% set img = session['cart_item'][key]['image'] %}
+               {% set title = session['cart_item'][key]['title'] %}
+       <div class="cart-info">
+        <div class="row">
+       <div class="col-sm-3" ><img src="static/images/{{img}}"/>
+      <p>{{ title}}</p>
+     </div>
+     <div class="col-sm-3">
+      <button  class="btn btn-danger" onclick="delete_cart({{session['cart_item'][key]['id']}})">
+                            <span class="glyphicon glyphicon-remove"></span> Remove
+                        </button>
+     </div>
+      <div class="col-sm-3" >
+       <span class="input-group-btn">
+      <button class="btn btn-default btn-number"   value="plus" onclick="add_cart_quantity({{session['cart_item'][key]['id']}})">
+        <span class="glyphicon glyphicon-plus"></span>Plus
+                        </button>
+       </span>
+      <input type="text" name="quantity" value="{{quantity}}">
+      <span class="input-group-btn">
+      <button class="btn btn-default btn-number"  value="minus" onclick="delete_cart_quantity({{session['cart_item'][key]['id']}})">
+         <span class="glyphicon glyphicon-minus"></span>Minus
+      </button>
+      </span>
+     </div>
+      <div class="col-sm-3" >
+     <p class="price">${{ price }}</p>
+     </div>
+      </div>
+      </div>
+     {% endfor %}
+    <div class="total-price">
+      <table>
+      <tr class="total-row">
+      <td>
+      Subtotal
+      </td>
+      <td class="Total">
+          <h3><strong>$ {{ session['all_total_price'] }}</strong></h3>
+      </td>
+      </tr>
+      <tr class="total-row">
+      <td>
+      ToTal Quantity
+      </td>
+      <td class="Total">
+        <strong>{{ session['all_total_quantity'] }}</strong>
+      </td>
+      </tr>
+      <tr class="grandtotal-row">
+      <td>
+      GrandTotal
+      </td>
+      <td class="GrandTotal">
+      </td>
+      </tr>
+      </table>
+      </div>
+        </div>
+        </div>
+        {% else: %}
+         <div class="no-records">Your Cart is Empty</div>
+      {% endif %}
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+ </div>
+  <!-- Main -->
+  <main>
+    <!-- New Arrival -->
+    <section class="section new__arrival" id="new__arrival">
+      <div class="arrivals container">
+        <div class="title">
+          <h1 class="primary__title">Our Products</h1>
+        </div>
+
+        <div class="arrival__center">
+          {% for product in data%}
+          <div class="product">
+            <div class="img__container">
+              <img  class="arrival-shop-item-img" src="static/images/{{product['img']}}" alt="" />
+            </div>
+            <div class="product__bottom">
+
+              <h3 class="arrival-shop-item-title" >{{product['title']}}</h3>
+              <h3 class="arrival-shop-item-price">${{product['price']}}</h3>
+              <div class="cart-action">
+                <input type="hidden" id="code" name="code" value="{{product['id']}}"/>
+                <input type="hidden" id="quantity" name="quantity" value="1"/>
+                <input type="button" id="addtocart_{{product['id']}}" data-id="{{product['id']}}" value="Add to Cart" class="btnAddAction" onclick="add_to_cart({{product['id']}})"  />
+                <input type="button" id="added_{{product['id']}}" value="GoToCart" data-target="#myModal" class="btnAddAction" style="display:none"  />
+              </div>
+
+            </div>
+          </div>
+         {%endfor%}
+        </div>
+      </div>
+    </section>
+
+    <!-- Cart Slide -->
+    <section class="cart__slide">
+      <div class="arrival__slide container">
+        <div class="glide" id="glide1">
+          <div class="glide__track" data-glide-el="track">
+
+            <ul class="glide__slides">
+              {% for product in data%}
+              <li class="glide__slide">
+                <div class="arrival">
+                  <div class="cart__like">
+                    <div class="image__holder">
+                      <img src="static/images/{{product['img']}}" alt="" />
+                    </div>
+                    <div class="cart__details">
+                      <h1>{{product['title']}}</h1>
+                      <p>
+                        {{product['info']}}
+                      </p>
+                      <div class="rating">
+                        <span>
+                          <svg>
+                            <use xlink:href="static/images/sprite.svg#icon-star-full"></use>
+                          </svg>
+                        </span>
+                        <span>
+                          <svg>
+                            <use xlink:href="static/images/sprite.svg#icon-star-full"></use>
+                          </svg>
+                        </span>
+                        <span>
+                          <svg>
+                            <use xlink:href="static/images/sprite.svg#icon-star-full"></use>
+                          </svg>
+                        </span>
+                        <span>
+                          <svg>
+                            <use xlink:href="static/images/sprite.svg#icon-star-full"></use>
+                          </svg>
+                        </span>
+                        <span>
+                          <svg>
+                            <use xlink:href="static/images/sprite.svg#icon-star-empty"></use>
+                          </svg>
+                        </span>
+                      </div>
+                      <div class="colors">
+
+                      </div>
+                      <div class="btn__group">
+                        <a>Add To Cart</a>
+                           <button>{{product['price']}}-</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+             {%endfor%}
+            </ul>
+          </div>
+
+          <!-- Arrows -->
+          <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+              prev
+            </button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+              next
+            </button>
+          </div>
+
+          <!-- Thumbnails -->
+          <div class="glide__bullets" data-glide-el="controls[nav]">
+            {% for product in data %}
+            <button class="glide__bullet" data-glide-dir="=0">
+              <div class="thumbnail">
+                <img src="static/images/{{product['img']}}" alt="" />
+              </div>
+            </button>
+            {%endfor%}
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Special Offer Banner -->
+    <section class="section special__offer">
+      <div class="offer__container">
+        <h1>ORDER NOW</h1>
+        <p>We connect to to sellers, from around you, inside campus</p>
+        <a href="#">SHOP NOW</a>
+      </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="section featured" id="featured">
+      <div class="featured__container container">
+        <div class="title">
+          <h1 class="primary__title">Featured Products</h1>
+        </div>
+
+        <div class="featured__center">
+          {% for product in data1%}
+          <div class="product">
+            <div class="img__container">
+              <img src="static/images/{{product['img']}}" alt="" />
+            </div>
+            <div class="product__bottom">
+              <div class="rating">
+                <span>
+                  <svg>
+                    <use xlink:href="static/images/sprite.svg#icon-star-full"></use>
+                  </svg>
+                </span>
+                <span>
+                  <svg>
+                    <use xlink:href="static/images/sprite.svg#icon-star-full"></use>
+                  </svg>
+                </span>
+                <span>
+                  <svg>
+                    <use xlink:href="st/images/sprite.svg#icon-star-full"></use>
+                  </svg>
+                </span>
+                <span>
+                  <svg>
+                    <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                  </svg>
+                </span>
+                <span>
+                  <svg>
+                    <use xlink:href="./images/sprite.svg#icon-star-empty"></use>
+                  </svg>
+                </span>
+              </div>
+              <h3>{{product['title']}}</h3>
+              <a href="#">Add To Cart</a>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- Footer -->
+    <footer id="footer" class="section footer">
+      <div class="container">
+        <div class="footer__top">
+          <div class="footer-top__box">
+            <h3>EXTRAS</h3>
+            <a href="#">Brands</a>
+            <a href="#">Gift Certificates</a>
+            <a href="#">Affiliate</a>
+            <a href="#">Specials</a>
+            <a href="#">Site Map</a>
+          </div>
+          <div class="footer-top__box">
+            <h3>INFORMATION</h3>
+            <a href="#">About Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Site Map</a>
+          </div>
+          <div class="footer-top__box">
+            <h3>MY ACCOUNT</h3>
+            <a href="#">My Account</a>
+            <a href="#">Order History</a>
+            <a href="#">Wish List</a>
+            <a href="#">Newsletter</a>
+            <a href="#">Returns</a>
+          </div>
+          <div class="footer-top__box">
+            <h3>CONTACT US</h3>
+            <div>
+              <span>
+                <svg>
+                  <use xlink:href="static/images/sprite.svg#icon-location"></use>
+                </svg>
+              </span>
+              Room 401, KP 7, Block 2, KIIT, Bhubaneshwar
+            </div>
+            <div>
+              <span>
+                <svg>
+                  <use xlink:href="static/images/sprite.svg#icon-envelop"></use>
+                </svg>
+              </span>
+              aniketpathak.kiit@gmail.com
+            </div>
+            <div>
+              <span>
+                <svg>
+                  <use xlink:href="static/images/sprite.svg#icon-phone"></use>
+                </svg>
+              </span>
+              123-345-67890
+            </div>
+            <div>
+              <span>
+                <svg>
+                  <use xlink:href="static/images/sprite.svg#icon-paperplane"></use>
+                </svg>
+              </span>
+              Orrisa, India
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+  </main>
+
+<!-- Custom Script -->
+  <script src="static/js/slider.js"></script>
+  <script src="static/js/script2.js"></script>
+  <script src="static/js/jquery3.6.js"></script>
+  <script type="text/javascript">
+  console.log("HII Java Script")
+  function add_to_cart(id){
+    var quantity=1
+    console.log("add cart is working!") // sanity check
+
+    $.ajax({
+        url :'add_product_cart', // the endpoint
+        type :'POST', // http method
+        data : { code:id,quantity:quantity }, // data sent with the post request
+
+        // handle a successful response
+        success : function(json) {
+            // remove the value from the input
+            console.log(json); // log the returned json to the console
+            console.log("success"); // another sanity check
+            $('.icon__item span').text(json)
+            $("#addtocart_"+id).hide();
+            $("#added_"+id).show();
+            $('#cart-modal-body').load('{{url_for('index')}}'+' #cart-modal-body')
+        }
+
+
+    });
+
+    }
+ function delete_cart(id){
+    var quantity=1
+    console.log("remove cart is working!") // sanity check
+
+    $.ajax({
+        url :'delete_product', // the endpoint
+        type :'POST', // http method
+        data : { code:id}, // data sent with the post request
+
+        // handle a successful response
+        success : function(json) {
+            // remove the value from the input
+            console.log(json); // log the returned json to the console
+            console.log("success"); // another sanity check
+            $('.icon__item span').text(json)
+            $("#addtocart_"+id).show();
+            $("#added_"+id).hide();
+            $('#cart-modal-body').load('{{url_for('index')}}'+' #cart-modal-body')
+        }
+
+
+    });
+
+    }
+    function add_cart_quantity(id){
+    var quantity=1
+    console.log("remove cart is working!") // sanity check
+
+    $.ajax({
+        url :'add_product_quantity', // the endpoint
+        type :'POST', // http method
+        data : { code:id}, // data sent with the post request
+
+        // handle a successful response
+        success : function(json) {
+            // remove the value from the input
+            console.log(json); // log the returned json to the console
+            console.log("success"); // another sanity check
+            //$('.icon__item span').text(json)
+            //$("#addtocart_"+id).show();
+         //$("#added_"+id).hide();
+            $('#cart-modal-body').load('{{url_for('index')}}'+' #cart-modal-body')
+        }
+
+
+    });
+
+    }
+    function delete_cart_quantity(id){
+    var quantity=1
+    console.log("remove cart is working!") // sanity check
+
+    $.ajax({
+        url :'delete_product_quantity', // the endpoint
+        type :'POST', // http method
+        data : { code:id}, // data sent with the post request
+
+        // handle a successful response
+        success : function(json) {
+            // remove the value from the input
+            console.log(json); // log the returned json to the console
+            console.log("success"); // another sanity check
+            //$('.icon__item span').text(json)
+            //$("#addtocart_"+id).show();
+         //$("#added_"+id).hide();
+            $('#cart-modal-body').load('{{url_for('index')}}'+' #cart-modal-body')
+        }
+
+
+    });
+
+    }
+  </script>
+
+</body>
+
+</html>
